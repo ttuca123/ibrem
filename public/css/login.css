@@ -1,0 +1,8 @@
+
+body{
+
+    background-image: url(../img/fundo_login.jpg), url(../img/fundo_login.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: top, right; 
+}
