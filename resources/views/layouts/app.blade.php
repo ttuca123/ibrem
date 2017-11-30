@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>IBREM</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +31,7 @@
                     <!-- Branding Image -->
 
 
-                    <a class="navbar-brand" href="http://ibrem.com.br/" target="_blank">
+                    <a class="navbar-brand" href="http://ibrem.com.br/" target="_blank" title="Acessar o site oficial">
                            <img src={{ asset('img/logo.jpg') }} alt="Acessar Home-Page" height="35" width="50"/>
                     </a>
                 </div>
@@ -50,11 +50,10 @@
                                                      document.getElementById('register-form').submit();">
                                             Tipos de Permissões
                                         </a>  
-                                        <form id="register-form" action="{{ route('register') }}" method="GET" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                        
 
-                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                        <li><a href="{{ route('register') }}">Registrar Usuário</a></li>
+                                        <li><a href="{{action('UserController@list')}}">Listar Usuários</a></li>
                                                                               
                                                                      
                                     </li>
@@ -151,7 +150,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} - {{ Auth::user()->email }}  <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
