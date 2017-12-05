@@ -38,7 +38,8 @@
                       <td>Coordenador</td>
                       
                         <td><button type="submit" class="edit-modal btn btn-info btn-small " data-id="<?php echo $usuario->id ?>"                  
-                          data-nome="<?php echo $usuario->name ?>"  data-email="<?php echo $usuario->email ?>" 
+                          data-cargo="<?php echo '4' ?>" data-nome="<?php echo $usuario->name ?>"  
+                          data-email="<?php echo $usuario->email ?>"  data-permissao="<?php echo '1, 2 , 3 , 4' ?>" 
                           ><span class="glyphicon glyphicon-edit"></span> Editar</button></td> 
 
                           <td><button type="submit" class="delete-modal btn btn-small btn-danger " data-id="<?php echo $usuario->id ?>"                  
@@ -87,11 +88,11 @@
             </div>
             <div class="form-group">
               <label for="pLider" >Permissões:</label>
-              <div  class="checkbox">                
-                <label><input type="checkbox"  id="pLider" value="1" />Líder</label>
-                <label><input type="checkbox"  id="pSupervisor" value="2" />Supervisor</label>
-                <label><input type="checkbox"  id="pCoordenador" value="3"/>Coordenador</label>
-                <label><input type="checkbox"  id="pPastor" value="4"/>Pastor</label>              
+              <div id="selectPermissao"   class="checkbox">                
+                <label><input type="checkbox" id="pLider"  name="pLider" value="1" />Líder</label>
+                <label><input type="checkbox" id="pSupervisor" name="pSupervisor"  value="2" />Supervisor</label>
+                <label><input type="checkbox" id="pCoordenador" name="pCoordenador"  value="3"/>Coordenador</label>
+                <label><input type="checkbox" id="pPastor" name="pPastor"  value="4"/>Pastor</label>              
               </div>                       
              </div>                                     
            </form>

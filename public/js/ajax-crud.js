@@ -1,19 +1,57 @@
 
 
-    $(document).on('click', '.edit-modal', function() {
+    $(document).on('click', '.edit-modal', function() {      
         
-        var arr = [];
         
-        /*$("input:checkbox[name=mySelect]:checked").each(function(){
-            arr.push($(this).val());
-        });
+        /*$("input:checkbox[name=permissao]:checked").each(function(){
+            arr.push($(this).val());            
+            $('#permissao').val($(this).checked('true'));
+        }); */
         
-        arr.forEach(function(item) {
+       /* arr.forEach(function(item) {
             console.log(item ? 'true' : 'false');
-        });*/
+                });*/       
         
-        //$("input:checkbox[name=mySelect]:checked").val("2");
-        $('#mySelect').val($(this).data('selectCargo'));
+        
+        var id = $(this).data("id");
+        var nome = $(this).data("nome");
+        var email = $(this).data("email");
+        var permissoes = JSON.parse("[" + $(this).data("permissao") + "]");
+
+        permissoes.forEach(function(permissao) {
+            
+            switch(permissao)
+            {
+                case 1:
+                    $('#pLider').prop('checked', 'true');  
+
+                break;
+
+                case 2:
+                 
+                    $('#pSupervisor').prop('checked', 'true');
+
+                break;
+
+                case 3:
+                    
+                    $('#pCoordenador').prop('checked', 'true');       
+
+                break;
+
+                case 4:
+                    
+                    $('#pPastor').prop('checked', 'true');     
+
+                break;
+                default:
+                break;
+            }         
+        
+            
+        });
+
+        $('#selectCargo').val($(this).data('cargo'));       
 
         $('#footer_action_button').text(" Update");
         $('#footer_action_button').addClass('glyphicon-check');
@@ -24,9 +62,9 @@
         $('.modal-title').text('Editar');
         $('.deleteContent').hide();
         $('.form-vertical').show();
-        $('#fid').val($(this).data('id'));
-        $('#nome').val($(this).data('nome'));        
-        $('#email').val($(this).data('email'));        
+        $('#fid').val(id);
+        $('#nome').val(nome);        
+        $('#email').val(email);        
         $('#myModal').modal('show');
     });
     $('.modal-footer').on('click', '.edit', function() {
