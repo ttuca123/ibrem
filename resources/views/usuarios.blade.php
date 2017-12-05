@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
 
 <title>Listagem de Usuários</title>
 @section('content')
@@ -12,7 +11,7 @@
       <div class="panel-body" style="overflow-x:auto;">
     
     <table class="table table-striped"  >
-    <tr>
+    <tr >
         <td>#</td>
         <td>Cargo</td>
         <td>Nome</td>
@@ -21,7 +20,7 @@
         <td>Permissões</td>
         <td>Editar</td>
         <td>Excluir</td>
-
+        {{ csrf_field() }}
     </tr>
 
     <?php
@@ -29,7 +28,7 @@
         $contador=1;
     ?>
           @foreach($usuarios as $usuario)
-                  <tr>                
+                  <tr class="item{{$usuario->id}}">                
                       <td><?php echo $contador++; ?></td>
                       <td>Coordenador</td>
                       <td><?php echo $usuario->name; ?></td>
@@ -77,7 +76,7 @@
                   <option value="4">Pastor de Rede</option>
                 </select>
               </div>
-
+            <input id="fid" type="hidden" value=""/>
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input type="nome" class="form-control" id="nome" required autofocus />
@@ -95,26 +94,27 @@
                 <label><input type="checkbox" id="pPastor" name="pPastor"  value="4"/>Pastor</label>              
               </div>                       
              </div>                                     
-           </form>
+             </form>
             <div class="deleteContent">
              Você tem certeza que quer deletar <strong><span class="title"></span></strong>?
               <span class="hidden id"></span>
              </div>
-          <div class="modal-footer">
-            <button type="button" class="btn actionBtn" data-dismiss="modal">
-              <span id="footer_action_button" class='glyphicon'> </span>
-            </button>
-            <button type="button" class="btn btn-warning" data-dismiss="modal">
-              <span class='glyphicon glyphicon-remove'></span> Fechar
-            </button>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn actionBtn" data-dismiss="modal">
+                <span id="footer_action_button" class='glyphicon'> </span>
+              </button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span class='glyphicon glyphicon-remove'></span> Fechar
+              </button>
+            </div>
+          
         </div>
       </div>
     </div>
 
     <meta name="_token" content="{!! csrf_token() !!}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
     <script src="{{asset('js/ajax-crud.js')}}"></script>
   
 

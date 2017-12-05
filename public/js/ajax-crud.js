@@ -53,7 +53,7 @@
 
         $('#selectCargo').val($(this).data('cargo'));       
 
-        $('#footer_action_button').text(" Update");
+        $('#footer_action_button').text("Salvar");
         $('#footer_action_button').addClass('glyphicon-check');
         $('#footer_action_button').removeClass('glyphicon-trash');
         $('.actionBtn').addClass('btn-success');
@@ -70,15 +70,24 @@
     $('.modal-footer').on('click', '.edit', function() {
         $.ajax({
             type: 'post',
-            url: '/editItem',
+            url: '/edit-usuario',
             data: {
                 '_token': $('input[name=_token]').val(),
                 'id': $("#fid").val(),
-                'title': $('#t').val(),
-                'description': $('#d').val()
+                'nome': $('#nome').val(),
+                'email': $('#email').val()
             },
+
+            //Função para reorganizar a tabela em caso de sucesso na edição
             success: function(data) {
-                $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.description + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+                $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id
+                 + "</td><td>" + data.nome + "</td><td>" + data.email
+                 + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + 
+                "' data-nome='" + data.nome + "' data-email='" + data.email + 
+                "'><span class='glyphicon glyphicon-edit'></span> Edit</button> "+
+                "<button class='delete-modal btn btn-danger' data-id='" + data.id 
+                + "' data-nome='" + data.nome + 
+                "><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
             }
         });
       });
@@ -99,4 +108,18 @@ $(document).on('click', '.delete-modal', function() {
     $('.form-vertical').hide();
     $('.title').html($(this).data('title'));
     $('#myModal').modal('show');
+  });
+    
+$('.modal-footer').on('click', '.delete', function() {
+    $.ajax({
+      type: 'post',
+      url: '/remove-usuario',
+      data: {
+        '_token': $('input[name=_token]').val(),
+        'id': $('.id').text()
+      },
+      success: function(data) {
+        $('.item' + $('.id').text()).remove();
+      }
+    });
   });

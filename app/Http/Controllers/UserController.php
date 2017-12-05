@@ -15,23 +15,28 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function editar(Request $req) {
+        $user = User::find ($req->id);
+        $user->name = $req->nome;
+        $user->email = $req->email;
+        $user->save();
+
+        return response()->json($user);
+    }
+  
+
     protected function list()
     {
         $usuarios = DB::table('users')->paginate(15);
 
         return view('usuarios', ['usuarios' => $usuarios]);
-        ;
-
-        //return view('usuarios')->with('contas_pagar', $contas_pagar);
+        ;       
     }
 
+    public function remover(Request $req) {
+        $user = User::find ($req->id);       
+        $user->delete();
 
-    protected function prepareUpdate($id)
-    {
-        $user = User::where('id', $id)->get();
-
-        return view('usuarios')->with('user', $user);
-        
-    }
-    
+        return response()->json();
+    }   
 }

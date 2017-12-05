@@ -22,7 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/usuarios', 'UserController@list');
 
-Route::get('/usuarios/{id}', "UserController@prepareUpdate");
+Route::post ( '/edit-usuario', 'UserController@editar' );
+
+
+Route::post ( '/remove-usuario', 'UserController@remover' );
+
 
 
 
