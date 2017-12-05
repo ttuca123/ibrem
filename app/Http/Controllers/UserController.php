@@ -17,12 +17,21 @@ class UserController extends Controller
 
     protected function list()
     {
-        $usuarios = DB::table('users')->paginate(2);
+        $usuarios = DB::table('users')->paginate(15);
 
         return view('usuarios', ['usuarios' => $usuarios]);
         ;
 
         //return view('usuarios')->with('contas_pagar', $contas_pagar);
+    }
+
+
+    protected function prepareUpdate($id)
+    {
+        $user = User::where('id', $id)->get();
+
+        return view('usuarios')->with('user', $user);
+        
     }
     
 }

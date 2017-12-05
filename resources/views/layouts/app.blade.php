@@ -41,6 +41,9 @@
                    @auth
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                    <li><a href="{{action('HomeController@index')}}" >Home </a>                                              
+                        
+                        </li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
                          >Administrativo <span class="caret"></span></a>
                             <ul class="dropdown-menu">
