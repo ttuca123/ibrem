@@ -54,18 +54,14 @@
                                         onclick="event.preventDefault();
                                                      document.getElementById('register-form').submit();">
                                             Tipos de Permissões
-                                        </a>  
-                                        
+                                        </a>                 
 
                                         <li><a href="{{ route('register') }}">Registrar Usuário</a></li>
-                                        <li><a href="{{action('UserController@list')}}">Listar Usuários</a></li>
-                                                                              
+                                        <li><a href="{{action('UserController@list')}}">Listar Usuários</a></li>                                                                    
                                                                      
                                     </li>
-                            </ul>                    
-                        
-                        </li>
-                        
+                            </ul>                                            
+                        </li>                       
 
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
                          >Avisos /Mensagens <span class="caret"></span></a>

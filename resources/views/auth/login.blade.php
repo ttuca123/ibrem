@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-                <div class="panel-heading"><h2 align="center">Login</h2></div>        
+                <div class="panel-heading"><h2 align="center">IBREM</h2></div>        
 
 
                 <div class="panel-body">
@@ -20,7 +20,7 @@
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>                                      
                                     </span>
                                 @endif
                             </div>
